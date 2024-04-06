@@ -9,11 +9,11 @@ const router = express.Router();
 router
   .route("/")
   .get((req, res) => {
-    console.log("req.body: ", req.body);
+    // console.log("req.body: ", req.body);
     return res.json({ msg: "hello form server" });
   })
   .post(async (req, res) => {
-    console.log("req.body: ", req.body);
+    // console.log("req.body: ", req.body);
     // Check if required fields are provided in the request body
     if (!req.body.url || !req.body.name)
       return res.status(400).json({
@@ -38,7 +38,7 @@ router.route("/:id").get(async (req, res) => {
   try {
     // Getting device information from the useragent
     let deviceInfo = req.useragent;
-    console.log("user/google ", deviceInfo);
+    console.log("user visited to: ",req.params.id, " from: " deviceInfo.source);
 
     // Removing unnecessary properties from deviceInfo
     for (let key in deviceInfo) {
@@ -92,7 +92,7 @@ router.get("/analytics/:shortId", async (req, res) => {
 
 router.get("/dvn/allData", async (req, res) => {
   const allUrls = await URL.find({});
-  console.log("allUrls", allUrls);
+  // console.log("allUrls", allUrls);
   return res.status(400).json(allUrls);
 });
 module.exports = router;
