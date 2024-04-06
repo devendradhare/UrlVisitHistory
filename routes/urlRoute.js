@@ -38,7 +38,12 @@ router.route("/:id").get(async (req, res) => {
   try {
     // Getting device information from the useragent
     let deviceInfo = req.useragent;
-    console.log("user visited to: ",req.params.id, " from: ", deviceInfo.source);
+    console.log(
+      "user visited to: ",
+      req.params.id,
+      " from: ",
+      deviceInfo.source
+    );
 
     // Removing unnecessary properties from deviceInfo
     for (let key in deviceInfo) {
@@ -77,7 +82,9 @@ router.route("/:id").get(async (req, res) => {
     }
   } catch (error) {
     console.error("Error:", error);
-    return res.status(500).send("Internal Server Error");
+    return res
+      .status(400)
+      .json({ "error message": "Internal Server Error", error });
   }
 });
 
