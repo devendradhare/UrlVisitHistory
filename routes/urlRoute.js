@@ -68,7 +68,7 @@ router.route("/:id").get(async (req, res) => {
 
     if (resultUrl) {
       // // // temp return for production only
-      return res.status(500).send("successfull");
+      // return res.status(500).send("successfull");
       // Redirecting to the URL
       return res.redirect(resultUrl.redirectURL);
     } else {
